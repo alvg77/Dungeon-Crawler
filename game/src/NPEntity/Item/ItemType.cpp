@@ -1,5 +1,7 @@
 #include "ItemType.hpp"
 
+#include <stdexcept>
+
 std::string_view getItemTypeName(const ItemType itemType) {
   switch (itemType) {
     case ItemType::WEAPON:

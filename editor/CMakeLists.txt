@@ -11,7 +11,10 @@ set(EDITOR_SOURCES
 add_library(editor_lib ${EDITOR_SOURCES})
 
 target_include_directories(editor_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(editor_lib PUBLIC nlohmann_json::nlohmann_json boost::boost)
+target_link_libraries(editor_lib
+        PUBLIC nlohmann_json::nlohmann_json
+        PRIVATE Boost::format
+)
 
 add_executable(editor_exec src/main.cpp)
 target_link_libraries(editor_exec PRIVATE editor_lib)

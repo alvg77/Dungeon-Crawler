@@ -1,5 +1,7 @@
 #include "HeroClass.hpp"
 
+#include <stdexcept>
+
 std::string_view getHeroClassName(const HeroClass heroClass) {
   switch (heroClass) {
     case HeroClass::WARRIOR:

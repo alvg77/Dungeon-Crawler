@@ -3,78 +3,64 @@
 A C++ dungeon crawler game with a level editor for automatically generating maps. This is a project for my university
 OOP course.
 
----
-
-## 🛠️ Project Structure
-
-- `src/` — Game source code
-- `data/` — JSON files containing data about levels, monsters, items and saves
-- `editor/` — Game level editor
-- `CMakeLists.txt` — CMake build configuration
-- `conanfile.py` — Conan dependencies
-
----
-
 ## 🚀 How to Start the Project
 
 ### 1. Prerequisites
 
 Make sure the following are installed:
 
-- [CMake](https://cmake.org/)
-- [Conan](https://conan.io/) — install via:
-
-  ```bash
-  pip install conan
-  ```
+- [vcpkg](https://vcpkg.io/en/) package manager for C++
 
 - A C++ compiler (e.g., GCC or Clang)
 - Python (required for Conan)
 
 ---
 
-### 2. Install Dependencies
+### 2. Installing Dependencies and Building the Project
 
-Use Conan to install all required packages into the build folder:
+[You can follow this guide on installing packages with vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-bash)
+
+**tl;dr**
+
+Create `CMakeUserPresets.json` in the root of the project:
+
+```json
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "default",
+      "inherits": "vcpkg",
+      "environment": {
+        "VCPKG_ROOT": "<path to vcpkg>"
+      }
+    }
+  ]
+}
+```
+
+Configure the build using CMake:
 
 ```bash
-conan install . --output-folder=cmake-build-debug --build=missing
+cmake --preset=default
 ```
+
+Build the project:
+
+```bash
+cmake --build build
+```
+
+The compiled executables will be located in their respective subdirectories in `build/`. For example, the game executable can be found in the `game/` subdirectory.
 
 ---
 
-### 3. Configure the Project with CMake
-
-Generate the build files using the Conan toolchain:
-
-```bash
-cd cmake-build-debug
-```
-
-```
-cmake .. -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
-```
-
----
-
-### 4. Build the Project
-
-Compile the source code:
-
-```bash
-cmake --build .
-```
-
-***The same steps can be followed for building the level editor, which is located in the `/level` folder.***
-
----
-
-### 5. Ensure you have the required JSON files for the game
+### 3. Ensure you have the required JSON files for the game
 
 At the root of the project there should be a `data` folder. Inside it there will be 3 folders (a fourth one for the save
 files will be created after saving the game for the first time). The 3 folders will be:
 
-```bash
+```
 /levels
   level1.json
   level2.json
@@ -97,19 +83,7 @@ level.
 
 ---
 
-### 6. Run the Game
-
-After building, the executable should be inside `cmake-build-debug/`. You can run it with:
-
-```bash
-./cmake-build-debug/<game or editor>/<executable_name>
-```
-
-> Replace `<executable_name>` with the actual name of the output binary specified in `CMakeLists.txt`.
-
----
-
-### 7. (Optional) Generating Documentation with Doxygen
+### 4. Generating Documentation with Doxygen
 
 1. **Install Doxygen and Graphviz**
 
@@ -150,17 +124,3 @@ After building, the executable should be inside `cmake-build-debug/`. You can ru
    ```
 
    The generated documentation will be in the `docs/html` folder. Open `index.html` in your browser to view it.
-
----
-
-## 🔮 Future Development
-
-- Integrate a graphical interface using **SFML**
-- Add music and sound effects
-- Implement advanced gameplay mechanics:
-    - Traps
-    - Player and enemy skills
-    - Consumable items (e.g., potions, buffs)
-    - Limited vision system — restrict visibility to the player’s surroundings, hiding unexplored areas
-- Introduce more playable **classes** and **races**
-

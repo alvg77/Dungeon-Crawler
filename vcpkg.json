@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "doctest",
+    "nlohmann-json",
+    "raylib",
+    "boost"
+  ]
+}

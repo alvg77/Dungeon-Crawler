@@ -49,12 +49,14 @@ set(GAME_SOURCES
         src/Game/Combat/CoinToss.cpp
         src/Hero/Class/HeroClass.cpp
         src/Hero/Race/HeroRace.cpp
+        src/Graphics/GraphicalInterface.cpp
+        src/Graphics/GraphicalInterface.hpp
 )
 
 add_library(game_lib ${GAME_SOURCES})
 
 target_include_directories(game_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(game_lib PUBLIC nlohmann_json::nlohmann_json)
+target_link_libraries(game_lib PUBLIC nlohmann_json::nlohmann_json raylib)
 
 add_executable(game_exec src/main.cpp)
 target_link_libraries(game_exec PRIVATE game_lib)

@@ -1,5 +1,5 @@
 /.venv/
-/conan_provider.cmake
 /build/
 /docs
 Doxyfile
+CMakeUserPresets.json

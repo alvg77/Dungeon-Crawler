@@ -1,8 +1,7 @@
 #include "MazeGenerator.hpp"
 
-#include <__random/random_device.h>
-
 #include <random>
+#include <algorithm>
 #include <stack>
 
 #include "../Maze/Maze.hpp"

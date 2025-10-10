@@ -1,5 +1,7 @@
 #include "HeroRace.hpp"
 
+#include <stdexcept>
+
 std::string_view getHeroRaceName(HeroRace heroRace) {
   switch (heroRace) {
     case HeroRace::HUMAN:
