@@ -1,4 +1,4 @@
-# Dungeon Crawler Game
+# Terminal Based Dungeon Crawler Game
 
 A C++ dungeon crawler game with a level editor for automatically generating maps. This is a project for my university
 OOP course.
