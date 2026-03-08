@@ -12,8 +12,6 @@ Make sure the following are installed:
 - [vcpkg](https://vcpkg.io/en/) package manager for C++
 
 - A C++ compiler (e.g., GCC or Clang)
-- Python (required for Conan)
-
 ---
 
 ### 2. Installing Dependencies and Building the Project
